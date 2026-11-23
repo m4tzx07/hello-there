@@ -32,7 +32,6 @@ function HomePage() {
         <nav className={menuOpen ? "navigation navigation-open" : "navigation"}>
           <a href="#planos" onClick={() => setMenuOpen(false)}>Planos</a>
           <a href="#processo" onClick={() => setMenuOpen(false)}>Como funciona</a>
-          <Link to="/login">Área do cliente</Link>
           <a className="nav-cta" href="#contato" onClick={() => setMenuOpen(false)}>Fale conosco <ArrowRight size={15}/></a>
         </nav>
       </div>
