@@ -34,7 +34,7 @@ function HomePage() {
       <div className="header-inner"><Brand/>
         <button className="mobile-menu" aria-label="Abrir menu" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X/> : <Menu/>}</button>
         <nav className={menuOpen ? "nav nav-open" : "nav"}>
-          <a href="#como-funciona" onClick={() => setMenuOpen(false)}>Como funciona</a><a href="#planos" onClick={() => setMenuOpen(false)}>Planos</a><Link className="button button-small" to="/cadastro">Começar agora <ArrowUpRight size={16}/></Link>
+          <a href="#como-funciona" onClick={() => setMenuOpen(false)}>Como funciona</a><a href="#planos" onClick={() => setMenuOpen(false)}>Planos</a><a className="button button-small" href="https://wa.me/5541999642747" target="_blank" rel="noreferrer">Começar agora <ArrowUpRight size={16}/></a>
         </nav>
       </div>
     </header>
