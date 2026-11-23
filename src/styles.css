@@ -224,3 +224,158 @@
   visibility: hidden !important;
   pointer-events: none !important;
 }
+
+
+/* Camada extra de movimento — Pixel Studio */
+@keyframes softGlow {
+  0%, 100% { opacity: .28; transform: scale(.92); }
+  50% { opacity: .62; transform: scale(1.08); }
+}
+@keyframes artBob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -9px; }
+}
+@keyframes plateTurn {
+  0%, 100% { rotate: 0deg; }
+  50% { rotate: 5deg; }
+}
+@keyframes tinyWiggle {
+  0%, 88%, 100% { transform: rotate(0deg) translateY(0); }
+  91% { transform: rotate(-7deg) translateY(-2px); }
+  95% { transform: rotate(6deg) translateY(-3px); }
+}
+@keyframes pixelBlink {
+  0%, 100% { opacity: .28; scale: .8; }
+  50% { opacity: .9; scale: 1.12; }
+}
+@keyframes lineTravel {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(220%); }
+}
+@keyframes stepPulse {
+  0%, 100% { box-shadow: 0 0 0 0 #f26a0f00; }
+  50% { box-shadow: 0 0 0 7px #f26a0f12; }
+}
+@keyframes buttonShine {
+  0%, 72%, 100% { translate: -150% 0; }
+  88% { translate: 150% 0; }
+}
+@keyframes trustPulse {
+  0%, 100% { scale: .85; opacity: .55; }
+  50% { scale: 1.45; opacity: 1; }
+}
+
+/* Elementos decorativos ganham vida sem mudar sua posição original */
+.eyebrow-dot { animation: trustPulse 2.8s ease-in-out infinite; }
+.trust-inner i { animation: trustPulse 3.2s ease-in-out infinite; }
+.trust-inner i:nth-of-type(2) { animation-delay: -1.6s; }
+.sprinkle-one { animation: sprinkleDrift 5.5s ease-in-out infinite, pixelBlink 4s ease-in-out infinite; }
+.sprinkle-two { animation: sprinkleDrift 6.5s ease-in-out infinite reverse, pixelBlink 4.8s ease-in-out infinite; }
+.food-plate { animation: artBob 6.5s ease-in-out infinite; }
+.food-plate > div { animation: plateTurn 11s ease-in-out infinite; }
+.wellness-shape { animation: artBob 7.5s ease-in-out infinite; }
+.service-window { animation: artBob 6s ease-in-out infinite; }
+.photo-arch { transform-origin: center bottom; animation: artBob 7s ease-in-out infinite; }
+.photo-pot { animation: tinyWiggle 7s ease-in-out infinite; transform-origin: center bottom; }
+.note-icon { animation: tinyWiggle 6s ease-in-out infinite; }
+.plan-icon { animation: tinyWiggle 8s ease-in-out infinite; }
+.plan-card:nth-child(2) .plan-icon { animation-delay: -2.5s; }
+.plan-card:nth-child(3) .plan-icon { animation-delay: -5s; }
+
+/* Interações com resposta mais elástica e fluida */
+.button, .whatsapp-cta, .showcase-card, .plan-card, .text-link, .footer-contact {
+  transition-timing-function: cubic-bezier(.2,.8,.2,1);
+}
+.button, .whatsapp-cta { position: relative; overflow: hidden; isolation: isolate; }
+.button::after, .whatsapp-cta::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 auto 0 0;
+  width: 34%;
+  background: linear-gradient(100deg, transparent, #ffffff48, transparent);
+  transform: translateX(-150%);
+  animation: buttonShine 7s ease-in-out infinite;
+  pointer-events: none;
+}
+.button-outline::after, .button-dark::after { opacity: .42; }
+.button:hover, .whatsapp-cta:hover { transform: translateY(-4px) scale(1.015); }
+.button:active, .whatsapp-cta:active { transform: translateY(0) scale(.975); }
+.text-link svg, .button svg, .whatsapp-cta > svg, .footer-contact svg {
+  transition: transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.text-link:hover svg, .button:hover svg, .whatsapp-cta:hover > svg, .footer-contact:hover svg {
+  transform: translate(3px,-2px);
+}
+.showcase-card { transform: translateZ(0); }
+.showcase-card:hover { transform: translateY(-9px) rotate(-.35deg); box-shadow: 0 24px 48px #74401a16; }
+.showcase-card:nth-child(2):hover { transform: translateY(-9px) rotate(.35deg); }
+.showcase-art { isolation: isolate; }
+.showcase-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at 50% 50%, #ffffff35, transparent 62%);
+  transition: opacity .5s ease;
+}
+.showcase-card:hover .showcase-art::after { opacity: 1; }
+.plan-card:hover { transform: translateY(-9px) scale(1.012); }
+.plan-featured { animation: stepPulse 5s ease-in-out infinite; }
+.step-number { transition: color .35s ease, -webkit-text-stroke-color .35s ease, transform .35s ease; }
+.step:hover .step-number { color: #f26a0f20; transform: translateY(-5px) scale(1.04); }
+.step-line::after {
+  content: "";
+  position: absolute;
+  inset: -1px auto -1px 0;
+  width: 28%;
+  background: linear-gradient(90deg, transparent, var(--orange), transparent);
+  opacity: .75;
+  animation: lineTravel 4.5s ease-in-out infinite;
+}
+.step:nth-child(2) .step-line::after { animation-delay: -1.1s; }
+.step:nth-child(3) .step-line::after { animation-delay: -2.2s; }
+.step:nth-child(4) .step-line::after { animation-delay: -3.3s; }
+.faq-item button i { display: inline-grid; place-items: center; width: 27px; height: 27px; border-radius: 50%; background: #f26a0f10; transition: transform .35s ease, background .35s ease; }
+.faq-item button:hover i { transform: rotate(90deg); background: #f26a0f20; }
+.faq-active button i { transform: rotate(180deg); }
+.final-cta::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: -85px;
+  bottom: -190px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f26a0f38, transparent 68%);
+  animation: softGlow 6s ease-in-out infinite;
+  pointer-events: none;
+}
+.final-cta .cta-pixels { animation: sprinkleDrift 5s ease-in-out infinite; }
+
+/* Brilho e movimento mais contidos em telas menores */
+@media (hover: hover) and (pointer: fine) {
+  .floating-note:hover { transform: translateY(-5px) scale(1.035); }
+  .plan-card:hover .plan-icon { transform: translateY(-4px) rotate(-9deg) scale(1.08); }
+}
+@media (max-width: 680px) {
+  .showcase-card:active { transform: scale(.975); }
+  .plan-card:active { transform: scale(.985); }
+  .button:active, .whatsapp-cta:active { transform: scale(.965); }
+  .step-number { transition-duration: .25s; }
+  .final-cta::before { width: 190px; height: 190px; right: -100px; bottom: -135px; }
+  .button::after, .whatsapp-cta::after { animation-duration: 9s; opacity: .55; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eyebrow-dot, .trust-inner i, .sprinkle-one, .sprinkle-two, .food-plate,
+  .food-plate > div, .wellness-shape, .service-window, .photo-arch, .photo-pot,
+  .note-icon, .plan-icon, .button::after, .whatsapp-cta::after,
+  .plan-featured, .step-line::after, .final-cta::before, .cta-pixels {
+    animation: none !important;
+  }
+  .showcase-card:hover, .plan-card:hover, .button:hover, .whatsapp-cta:hover {
+    transform: none !important;
+  }
+}
