@@ -21,7 +21,9 @@ const plans = [
 ];
 
 function PixelMark() {
-  return <svg viewBox="0 0 34 34" aria-hidden="true" className="pixel-mark"><path d="M4 4h18v5H9v5h13v5H9v11H4z" fill="currentColor"/><path d="M22 4h8v5h-8zM22 14h8v5h-8zM14 24h8v6h-8z" fill="currentColor" opacity=".55"/></svg>;
+  return <svg viewBox="0 0 706 641" aria-hidden="true" className="pixel-mark" focusable="false">
+    <path d="M681 207 540 53 506 21 494 18 171 19 49 139 36 155 439 156 512 232 514 239 314 439 311 240 215 242 15 436 14 621 20 623 145 508 153 504 161 494 208 454 492 453 683 264 690 248 690 228Z" fill="#FE5E02"/>
+  </svg>;
 }
 function Brand() { return <a className="brand" href="/" aria-label="Pixel Studio início"><PixelMark/><span>Pixel <b>Studio</b></span></a>; }
 
