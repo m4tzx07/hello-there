@@ -28,12 +28,13 @@ function Brand() { return <a className="brand" href="/" aria-label="Pixel Studio
 function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [faqOpen, setFaqOpen] = useState<number | null>(0);
-  return <main className="site-shell">
+  return <main className="site-shell" id="main-content">
+    <a className="skip-link" href="#main-content">Pular para o conteúdo</a>
     <div className="corner corner-top" /><div className="corner corner-bottom" />
     <header className="site-header">
       <div className="header-inner"><Brand/>
-        <button className="mobile-menu" aria-label="Abrir menu" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X/> : <Menu/>}</button>
-        <nav className={menuOpen ? "nav nav-open" : "nav"}>
+        <button className="mobile-menu" aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} aria-expanded={menuOpen} aria-controls="primary-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X/> : <Menu/>}</button>
+        <nav id="primary-navigation" className={menuOpen ? "nav nav-open" : "nav"}>
           <a href="#como-funciona" onClick={() => setMenuOpen(false)}>Como funciona</a><a href="#planos" onClick={() => setMenuOpen(false)}>Planos</a><a className="button button-small" href="https://wa.me/5541999642747" target="_blank" rel="noreferrer">Começar agora <ArrowUpRight size={16}/></a>
         </nav>
       </div>
@@ -77,7 +78,7 @@ function HomePage() {
       <div className="process-bottom"><span>CLAREZA EM CADA ETAPA</span><span>PIXEL STUDIO <b>✳</b></span></div>
     </div></section>
     <section className="pricing-section section-wrap" id="planos"><div className="pricing-intro"><div className="eyebrow">PLANOS TRANSPARENTES</div><h2>O próximo passo<br/>do seu negócio <span>começa aqui.</span></h2><p>Escolha o que faz sentido agora. Sem letras miúdas, sem complicação.</p></div>
-      <div className="plan-grid">{plans.map((plan) => {const Icon=plan.icon;return <article className={plan.recommended ? "plan-card plan-featured" : "plan-card"} key={plan.name}>{plan.recommended && <div className="recommended">RECOMENDADO</div>}<div className="plan-top"><div className="plan-icon"><Icon size={21}/></div><span>0{plans.indexOf(plan)+1}</span></div><h3>{plan.name}</h3><p className="plan-tagline">{plan.tagline}</p><div className="plan-price"><small>R$</small><strong>{plan.price}</strong><span> / projeto</span></div><div className="plan-divider"/><ul>{plan.features.map(f=><li key={f}><Check size={16}/>{f}</li>)}</ul><Link className={plan.recommended ? "button plan-button" : "button button-dark plan-button"} to="/cadastro">Escolher plano <ArrowRight size={17}/></Link></article>})}</div>
+      <div className="plan-grid">{plans.map((plan) => {const Icon=plan.icon;return <article className={plan.recommended ? "plan-card plan-featured" : "plan-card"} key={plan.name}>{plan.recommended && <div className="recommended">RECOMENDADO</div>}<div className="plan-top"><div className="plan-icon"><Icon size={21}/></div><span>0{plans.indexOf(plan)+1}</span></div><h3>{plan.name}</h3><p className="plan-tagline">{plan.tagline}</p><div className="plan-price"><small>R$</small><strong>{plan.price}</strong><span> / projeto</span></div><div className="plan-divider"/><ul>{plan.features.map(f=><li key={f}><Check size={16}/>{f}</li>)}</ul><a className={plan.recommended ? "button plan-button" : "button button-dark plan-button"} href={`https://wa.me/5541999642747?text=${encodeURIComponent(`Olá! Tenho interesse no plano ${plan.name} da Pixel Studio.`)}`} target="_blank" rel="noreferrer">Escolher plano <ArrowRight size={17}/></a></article>})}</div>
       <div className="care-note"><span className="care-spark">✳</span><p><b>Quer manter seu site sempre atualizado?</b><br/>Conheça o Pixel Care, com hospedagem e pequenas atualizações por <strong>R$ 49/mês.</strong></p><span className="care-tag">OPCIONAL</span></div>
     </section>
     <section className="faq-section section-wrap"><div className="faq-intro"><div className="eyebrow">DÚVIDAS FREQUENTES</div><h2>Ficou com<br/>alguma <span>dúvida?</span></h2><p>Separamos algumas respostas para você começar com tranquilidade.</p><a className="text-link" href="https://wa.me/5541999642747" target="_blank" rel="noreferrer">Fale com a gente <ArrowUpRight size={17}/></a></div>
