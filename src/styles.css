@@ -218,3 +218,9 @@
   .pricing-intro h2 span::after,
   .faq-intro h2 span::after { transition: none !important; }
 }
+
+#lovable-badge {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
